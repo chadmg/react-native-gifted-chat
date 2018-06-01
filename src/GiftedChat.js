@@ -330,7 +330,7 @@ class GiftedChat extends React.Component {
       return {
         ...message,
         user: this.props.user,
-        createdAt: new Date(),
+        createdAt: moment.utc().format(),
         _id: this.props.messageIdGenerator(),
       };
     });
