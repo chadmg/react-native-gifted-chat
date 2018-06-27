@@ -110,9 +110,6 @@ export default class MessageContainer extends React.PureComponent {
           renderFooter={this.renderLoadEarlier}
           {...this.props.invertibleScrollViewProps}
           ListFooterComponent={this.props.renderHeader}
-          contentInset={{
-            bottom: -500,
-          }}
         />
       </View>
     );
