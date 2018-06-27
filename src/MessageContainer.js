@@ -21,6 +21,7 @@ export default class MessageContainer extends React.PureComponent {
     super(props);
 
     this.renderRow = this.renderRow.bind(this);
+    this.renderHeader = this.renderHeader.bind(this);
     this.renderFooter = this.renderFooter.bind(this);
     this.renderLoadEarlier = this.renderLoadEarlier.bind(this);
     this.renderHeaderWrapper = this.renderHeaderWrapper.bind(this);
@@ -109,7 +110,7 @@ export default class MessageContainer extends React.PureComponent {
           ListHeaderComponent={this.renderFooter}
           renderFooter={this.renderLoadEarlier}
           {...this.props.invertibleScrollViewProps}
-          ListFooterComponent={this.renderHeaderWrapper}
+          ListFooterComponent={this.renderHeader}
         />
       </View>
     );
