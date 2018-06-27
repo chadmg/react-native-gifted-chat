@@ -2,16 +2,12 @@
 
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Platform, StyleSheet, View, Keyboard, ViewPropTypes } from 'react-native';
+import { StyleSheet, View, Keyboard, ViewPropTypes } from 'react-native';
 
 import Composer from './Composer';
 import Send from './Send';
 import Actions from './Actions';
 import Color from './Color';
-
-const isIphoneX = () => {
-  return Platform.OS === 'ios' && Dimensions.get('window').height === 812
-}
 
 export default class InputToolbar extends React.Component {
 
@@ -87,7 +83,7 @@ export default class InputToolbar extends React.Component {
 
   render() {
     return (
-      <View style={[styles.container, this.props.containerStyle, { position: this.state.position }, isIphoneX() ? { paddingBottom: 20 } : null]}>
+      <View style={[styles.container, this.props.containerStyle, { position: this.state.position }]}>
         <View style={[styles.primary, this.props.primaryStyle]}>
           {this.renderActions()}
           {this.renderComposer()}

@@ -8,7 +8,7 @@
 
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Animated, Platform, StyleSheet, View } from 'react-native';
+import { Animated, Dimensions, Platform, StyleSheet, View } from 'react-native';
 
 import ActionSheet from '@expo/react-native-action-sheet';
 import moment from 'moment';
@@ -38,6 +38,10 @@ import {
   TIME_FORMAT,
   DATE_FORMAT,
 } from './Constant';
+
+const isIphoneX = () => {
+  return Platform.OS === 'ios' && Dimensions.get('window').height === 812
+}
 
 class GiftedChat extends React.Component {
 
@@ -476,7 +480,7 @@ class GiftedChat extends React.Component {
     if (this.state.isInitialized === true) {
       return (
         <ActionSheet ref={(component) => (this._actionSheetRef = component)}>
-          <View style={styles.container} onLayout={this.onMainViewLayout}>
+          <View style={[styles.container, isIphoneX() ? { marginBottom: 20 } : null]} onLayout={this.onMainViewLayout}>
             {this.renderMessages()}
             {this.renderInputToolbar()}
           </View>
