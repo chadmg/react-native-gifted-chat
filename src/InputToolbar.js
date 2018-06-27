@@ -10,7 +10,7 @@ import Actions from './Actions';
 import Color from './Color';
 
 const isIphoneX = () => {
-  return Platform.OS === 'ios' && height === 812
+  return Platform.OS === 'ios' && Dimensions.get('window').height === 812
 }
 
 export default class InputToolbar extends React.Component {
