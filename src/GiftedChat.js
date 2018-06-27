@@ -480,7 +480,7 @@ class GiftedChat extends React.Component {
     if (this.state.isInitialized === true) {
       return (
         <ActionSheet ref={(component) => (this._actionSheetRef = component)}>
-          <View style={[styles.container, isIphoneX() ? { marginBottom: 20 } : null]} onLayout={this.onMainViewLayout}>
+          <View style={[styles.container, isIphoneX() ? { marginBottom: 10 } : null]} onLayout={this.onMainViewLayout}>
             {this.renderMessages()}
             {this.renderInputToolbar()}
           </View>
