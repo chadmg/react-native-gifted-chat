@@ -2,7 +2,7 @@
 
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Platform, StyleSheet, TextInput } from 'react-native';
+import { View, Platform, StyleSheet, TextInput } from 'react-native';
 
 import { MIN_COMPOSER_HEIGHT, DEFAULT_PLACEHOLDER } from './Constant';
 import Color from './Color';
@@ -31,6 +31,17 @@ export default class Composer extends React.Component {
 
   render() {
     return (
+      <View
+        style={{
+          flex: 1,
+          borderColor: '#DADFE1',
+          borderWidth: 1,
+          marginLeft: 10,
+          marginBottom: 10,
+          marginTop: 10,
+          borderRadius: 20,
+        }}
+      >
       <TextInput
         testID={this.props.placeholder}
         accessible
@@ -41,7 +52,7 @@ export default class Composer extends React.Component {
         onChange={(e) => this.onContentSizeChange(e)}
         onContentSizeChange={(e) => this.onContentSizeChange(e)}
         onChangeText={(text) => this.onChangeText(text)}
-        style={[styles.textInput, this.props.textInputStyle, { height: this.props.composerHeight }]}
+        style={[styles.textInput, { height: this.props.composerHeight }]}
         autoFocus={this.props.textInputAutoFocus}
         value={this.props.text}
         enablesReturnKeyAutomatically
@@ -49,6 +60,7 @@ export default class Composer extends React.Component {
         keyboardAppearance={this.props.keyboardAppearance}
         {...this.props.textInputProps}
       />
+      </View>
     );
   }
 
@@ -56,17 +68,16 @@ export default class Composer extends React.Component {
 
 const styles = StyleSheet.create({
   textInput: {
-    flex: 1,
     marginLeft: 10,
     fontSize: 16,
     lineHeight: 16,
     marginTop: Platform.select({
-      ios: 6,
+      ios: 2,
       android: 0,
     }),
     marginBottom: Platform.select({
       ios: 5,
-      android: 3,
+      android: 0,
     }),
   },
 });

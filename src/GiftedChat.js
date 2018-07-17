@@ -226,7 +226,7 @@ class GiftedChat extends React.Component {
       : this.props.minInputToolbarHeight;
   }
   calculateInputToolbarHeight(composerHeight) {
-    return composerHeight + (this.getMinInputToolbarHeight() - MIN_COMPOSER_HEIGHT);
+    return composerHeight + (this.getMinInputToolbarHeight() - MIN_COMPOSER_HEIGHT) + 10;
   }
 
   /**
@@ -240,7 +240,7 @@ class GiftedChat extends React.Component {
    * Returns the height, based on current window size, taking the keyboard into account.
    */
   getMessagesContainerHeightWithKeyboard(composerHeight = this.state.composerHeight) {
-    return this.getBasicMessagesContainerHeight(composerHeight) - this.getKeyboardHeight() + this.getBottomOffset();
+    return this.getBasicMessagesContainerHeight(composerHeight) - this.getKeyboardHeight() + this.getBottomOffset() + (isIphoneX() ? 15 : 0);
   }
 
   prepareMessagesContainerHeight(value) {
@@ -480,7 +480,7 @@ class GiftedChat extends React.Component {
     if (this.state.isInitialized === true) {
       return (
         <ActionSheet ref={(component) => (this._actionSheetRef = component)}>
-          <View style={[styles.container, isIphoneX() ? { marginBottom: 10 } : null]} onLayout={this.onMainViewLayout}>
+          <View style={[styles.container, isIphoneX() && !this.props.renderInputToolbar ? { marginBottom: 15 } : null]} onLayout={this.onMainViewLayout}>
             {this.renderMessages()}
             {this.renderInputToolbar()}
           </View>
